@@ -64,10 +64,11 @@ input {
 
 .form-panel {
   padding: clamp(28px, 4vw, 64px) clamp(28px, 10.2vw, 148px);
+  background: #1600ff;
 }
 
 .form-panel h1 {
-  margin: 0 0 clamp(42px, 5vw, 76px);
+  margin: 0 0 clamp(32px, 3.9vw, 64px);
   color: #fff;
   font-family: "My Weekend", sans-serif;
   font-size: clamp(42px, 5.75vw, 90px);
@@ -79,7 +80,7 @@ input {
 
 .form-panel fieldset {
   display: grid;
-  gap: clamp(22px, 2.5vw, 36px);
+  gap: clamp(16px, 2.25vw, 36px);
   max-width: 710px;
   margin: 0;
   padding: 0;
@@ -90,20 +91,20 @@ input {
   display: grid;
   gap: 8px;
   color: #fff;
-  font-size: clamp(20px, 2.7vw, 38px);
+  font-size: clamp(18px, 2.375vw, 38px);
   line-height: 1.08;
 }
 
 .field input {
   width: 100%;
-  min-height: clamp(54px, 5.1vw, 74px);
+  min-height: clamp(42px, 3.75vw, 60px);
   padding: 7px 12px;
   border: 3px solid #050505;
   border-radius: 0;
   outline: none;
   background: #fff;
   color: #ff0094;
-  font-size: clamp(21px, 2.65vw, 38px);
+  font-size: clamp(18px, 2.375vw, 38px);
   line-height: 1.15;
 }
 
@@ -149,7 +150,7 @@ input {
 }
 
 .ticket__hole {
-  width: clamp(30px, 3.5vw, 52px);
+  width: clamp(24px, 3.125vw, 50px);
   aspect-ratio: 1;
   border-radius: 50%;
   background: #050505;
@@ -167,22 +168,26 @@ input {
 }
 
 .ticket__notch--top {
-  top: -46%;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
 }
 
 .ticket__notch--middle {
   top: 50%;
-  right: 5%;
-  width: clamp(84px, 9.3vw, 134px);
-  height: clamp(60px, 6.7vw, 96px);
+  right: 2%;
+  width: clamp(72px, 8.375vw, 134px);
+  height: clamp(54px, 6vw, 96px);
   aspect-ratio: auto;
   border-radius: 40px;
   transform: translateY(-50%);
 }
 
 .ticket__notch--bottom {
-  bottom: -48%;
-  width: clamp(130px, 15vw, 216px);
+  right: 0;
+  bottom: 0;
+  width: clamp(104px, 13.5vw, 216px);
+  transform: translate(50%, 50%);
 }
 
 .ticket__send {
