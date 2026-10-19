@@ -68,7 +68,7 @@ input {
 }
 
 .form-panel h1 {
-  margin: 0 0 clamp(32px, 3.9vw, 64px);
+  margin: 0 0 clamp(32px, 3.4vw, 58px);
   color: #fff;
   font-family: "My Weekend", sans-serif;
   font-size: clamp(42px, 5.75vw, 90px);
@@ -80,7 +80,7 @@ input {
 
 .form-panel fieldset {
   display: grid;
-  gap: clamp(16px, 2.25vw, 36px);
+  gap: clamp(14px, 1.9vw, 30px);
   max-width: 710px;
   margin: 0;
   padding: 0;
@@ -97,7 +97,7 @@ input {
 
 .field input {
   width: 100%;
-  min-height: clamp(42px, 3.75vw, 60px);
+  min-height: clamp(40px, 3.35vw, 54px);
   padding: 7px 12px;
   border: 3px solid #050505;
   border-radius: 0;
