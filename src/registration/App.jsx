@@ -36,7 +36,7 @@ export default function App() {
 
           <fieldset disabled={isTearing || isSubmitted}>
             <label className="field">
-              <span>ФИО</span>
+              <span>(фио)</span>
               <input
                 autoComplete="name"
                 name="name"
@@ -48,7 +48,7 @@ export default function App() {
             </label>
 
             <label className="field">
-              <span>Номер телефона</span>
+              <span>(номер телефона)</span>
               <input
                 autoComplete="tel"
                 inputMode="tel"
@@ -64,7 +64,7 @@ export default function App() {
             </label>
 
             <label className="field">
-              <span>Количество гостей</span>
+              <span>(количество гостей)</span>
               <input
                 min="1"
                 max="99"
