@@ -1,5 +1,22 @@
 import React, { useState } from 'react';
 
+function phoneDigits(value) {
+  let digits = value.replace(/\D/g, '');
+  if (digits.length === 11 && /^[78]/.test(digits)) digits = digits.slice(1);
+  return digits.slice(0, 10);
+}
+
+function formatPhone(value) {
+  const digits = phoneDigits(value);
+  if (!digits) return '';
+  let formatted = '+7 (' + digits.slice(0, 3);
+  if (digits.length >= 3) formatted += ')';
+  if (digits.length > 3) formatted += ' ' + digits.slice(3, 6);
+  if (digits.length > 6) formatted += '-' + digits.slice(6, 8);
+  if (digits.length > 8) formatted += '-' + digits.slice(8, 10);
+  return formatted;
+}
+
 const initialForm = {
   name: '',
   phone: '',
@@ -10,15 +27,37 @@ export default function App() {
   const [form, setForm] = useState(initialForm);
   const [isTearing, setIsTearing] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasAttemptedSubmit, setHasAttemptedSubmit] = useState(false);
+  const isFormComplete = form.name.trim().length > 0 && phoneDigits(form.phone).length === 10 && Number(form.guests) >= 1;
 
   function updateField(event) {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
   }
 
+  function updatePhone(event) {
+    const input = event.currentTarget;
+    const caret = input.selectionStart ?? input.value.length;
+    const digitsBeforeCaret = phoneDigits(input.value.slice(0, caret)).length;
+    const nextPhone = formatPhone(input.value);
+    setForm((current) => ({ ...current, phone: nextPhone }));
+    requestAnimationFrame(() => {
+      const updated = input;
+      let nextCaret = 0;
+      let digitCount = 0;
+      while (nextCaret < nextPhone.length && digitCount < digitsBeforeCaret) {
+        if (/\d/.test(nextPhone[nextCaret])) digitCount += 1;
+        nextCaret += 1;
+      }
+      updated.setSelectionRange(nextCaret, nextCaret);
+    });
+  }
+
   function handleSubmit(event) {
     event.preventDefault();
     if (isTearing || isSubmitted) return;
+    setHasAttemptedSubmit(true);
+    if (!isFormComplete) return;
     setIsTearing(true);
   }
 
@@ -30,7 +69,7 @@ export default function App() {
 
   return (
     <main className="page">
-      <form className="registration" onSubmit={handleSubmit}>
+      <form className="registration" noValidate onSubmit={handleSubmit}>
         <div className="ticket-card">
         <section className="form-panel" aria-labelledby="page-title">
           <h1 id="page-title">Регистрация на ивент</h1>
@@ -43,6 +82,7 @@ export default function App() {
                 name="name"
                 onChange={updateField}
                 placeholder="синий кот"
+                aria-invalid={hasAttemptedSubmit && !form.name.trim()}
                 required
                 value={form.name}
               />
@@ -52,10 +92,12 @@ export default function App() {
               <span>(номер телефона)</span>
               <input
                 autoComplete="tel"
-                inputMode="tel"
+                inputMode="numeric"
                 name="phone"
-                onChange={updateField}
-                pattern="[+]?[0-9() -]{10,}"
+                onChange={updatePhone}
+                onInput={updatePhone}
+                aria-invalid={hasAttemptedSubmit && phoneDigits(form.phone).length !== 10}
+                pattern="\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}"
                 placeholder="+7 (000) 000-00-00"
                 required
                 title="Введите номер телефона, например +7 (999) 123-45-67"
@@ -72,6 +114,7 @@ export default function App() {
                 name="guests"
                 onChange={updateField}
                 required
+                aria-invalid={hasAttemptedSubmit && !(Number(form.guests) >= 1)}
                 type="number"
                 value={form.guests}
               />
@@ -104,7 +147,7 @@ export default function App() {
                 disabled={isTearing}
                 type="submit"
               >
-                <span>{isTearing ? 'Отправляем' : 'Отправить'}</span>
+                <span>{isTearing ? 'отправляем' : 'отправить'}</span>
               </button>
             </div>
           )}

@@ -113,6 +113,11 @@ input {
   opacity: 1;
 }
 
+.field input[aria-invalid="true"] {
+  border-color: #ff0094;
+  box-shadow: 0 0 0 2px #fff;
+}
+
 .field input:focus-visible {
   outline: 3px solid #fff;
   outline-offset: 4px;
@@ -203,8 +208,10 @@ input {
   color: #fff;
   cursor: pointer;
   font-size: clamp(28px, 3.5vw, 50px);
-  font-weight: 700;
-  transition: background-color 180ms ease;
+  font-family: "My Weekend", sans-serif;
+  font-weight: 400;
+  text-transform: lowercase;
+  transition: background-color 180ms ease, opacity 180ms ease;
 }
 
 .ticket__send span {
@@ -223,6 +230,11 @@ input {
 
 .ticket__send:disabled {
   cursor: wait;
+  opacity: 0.62;
+}
+
+.ticket__send:disabled:hover {
+  background: transparent;
 }
 
 .ticket--tearing {
@@ -269,10 +281,15 @@ input {
     transform: translateX(4px) rotate(1deg);
     filter: drop-shadow(-12px 8px 0 rgb(255 255 255 / 28%));
   }
+  62% {
+    opacity: 1;
+    transform: translate(10%, -1%) rotate(3deg);
+    filter: drop-shadow(-20px 10px 0 rgb(255 255 255 / 38%));
+  }
   100% {
     opacity: 0;
-    transform: translate(115%, -2%) rotate(13deg);
-    filter: drop-shadow(-24px 18px 7px rgb(0 0 0 / 18%));
+    transform: translate(125%, 4%) rotate(18deg);
+    filter: drop-shadow(-28px 24px 9px rgb(0 0 0 / 24%));
   }
 }
 
