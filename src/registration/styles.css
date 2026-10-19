@@ -1,7 +1,21 @@
+@font-face {
+  font-family: "My Weekend";
+  src: url("../fonts/my-weekend.otf") format("opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Golos";
+  src: url("../fonts/golos-ui-variable.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Golos", Arial, sans-serif;
   color: #fff;
-  background: #1600ff;
+  background: #000000;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -26,13 +40,25 @@ input {
 
 .page {
   min-height: 100vh;
-  background: #1600ff;
+  background: #000000;
 }
 
 .registration {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 29vw);
+  place-items: center;
+  width: 100%;
   min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(24px, 5vw, 96px);
+  overflow: hidden;
+  background: #000000;
+}
+
+.ticket-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 29%);
+  width: min(100%, 1440px);
+  aspect-ratio: 1440 / 663;
   overflow: hidden;
 }
 
@@ -43,14 +69,10 @@ input {
 .form-panel h1 {
   margin: 0 0 clamp(42px, 5vw, 76px);
   color: #fff;
-  font-family: "Oswald", "Arial Narrow", sans-serif;
-  font-size: clamp(42px, 6.2vw, 92px);
-  font-stretch: condensed;
-  font-weight: 500;
-  letter-spacing: -0.025em;
-  transform: scaleX(0.88);
-  transform-origin: left center;
-  line-height: 0.98;
+  font-family: "My Weekend", sans-serif;
+  font-size: clamp(42px, 5.75vw, 90px);
+  font-weight: 400;
+  line-height: 1;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -152,6 +174,9 @@ input {
   top: 50%;
   right: 5%;
   width: clamp(84px, 9.3vw, 134px);
+  height: clamp(60px, 6.7vw, 96px);
+  aspect-ratio: auto;
+  border-radius: 40px;
   transform: translateY(-50%);
 }
 
@@ -167,7 +192,7 @@ input {
   display: grid;
   place-items: center;
   width: 100%;
-  padding: 0 10% 0 0;
+  padding: 0 0 0 12%;
   border: 0;
   background: transparent;
   color: #fff;
@@ -248,8 +273,16 @@ input {
 
 @media (max-width: 760px) {
   .registration {
+    min-height: 100svh;
+    padding: 24px;
+  }
+
+  .ticket-card {
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: 1fr 150px;
+    width: 100%;
+    min-height: calc(100svh - 48px);
+    aspect-ratio: auto;
   }
 
   .form-panel {

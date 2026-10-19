@@ -31,6 +31,7 @@ export default function App() {
   return (
     <main className="page">
       <form className="registration" onSubmit={handleSubmit}>
+        <div className="ticket-card">
         <section className="form-panel" aria-labelledby="page-title">
           <h1 id="page-title">Регистрация на ивент</h1>
 
@@ -108,6 +109,7 @@ export default function App() {
             </div>
           )}
         </aside>
+        </div>
       </form>
     </main>
   );
