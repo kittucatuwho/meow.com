@@ -16701,30 +16701,30 @@ function App() {
     setIsTearing(false);
     setIsSubmitted(true);
   }
-  return /*#__PURE__*/React.createElement("main", {
+  return /*#__PURE__*/react.createElement("main", {
     className: "page"
-  }, /*#__PURE__*/React.createElement("form", {
+  }, /*#__PURE__*/react.createElement("form", {
     className: "registration",
     onSubmit: handleSubmit
-  }, /*#__PURE__*/React.createElement("section", {
+  }, /*#__PURE__*/react.createElement("section", {
     className: "form-panel",
     "aria-labelledby": "page-title"
-  }, /*#__PURE__*/React.createElement("h1", {
+  }, /*#__PURE__*/react.createElement("h1", {
     id: "page-title"
-  }, "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F \u043D\u0430 \u0438\u0432\u0435\u043D\u0442"), /*#__PURE__*/React.createElement("fieldset", {
+  }, "\u0420\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044F \u043D\u0430 \u0438\u0432\u0435\u043D\u0442"), /*#__PURE__*/react.createElement("fieldset", {
     disabled: isTearing || isSubmitted
-  }, /*#__PURE__*/React.createElement("label", {
+  }, /*#__PURE__*/react.createElement("label", {
     className: "field"
-  }, /*#__PURE__*/React.createElement("span", null, "\u0424\u0418\u041E"), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/react.createElement("span", null, "\u0424\u0418\u041E"), /*#__PURE__*/react.createElement("input", {
     autoComplete: "name",
     name: "name",
     onChange: updateField,
     placeholder: "\u0441\u0438\u043D\u0438\u0439 \u043A\u043E\u0442",
     required: true,
     value: form.name
-  })), /*#__PURE__*/React.createElement("label", {
+  })), /*#__PURE__*/react.createElement("label", {
     className: "field"
-  }, /*#__PURE__*/React.createElement("span", null, "\u041D\u043E\u043C\u0435\u0440 \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0430"), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/react.createElement("span", null, "\u041D\u043E\u043C\u0435\u0440 \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0430"), /*#__PURE__*/react.createElement("input", {
     autoComplete: "tel",
     inputMode: "tel",
     name: "phone",
@@ -16735,9 +16735,9 @@ function App() {
     title: "\u0412\u0432\u0435\u0434\u0438\u0442\u0435 \u043D\u043E\u043C\u0435\u0440 \u0442\u0435\u043B\u0435\u0444\u043E\u043D\u0430, \u043D\u0430\u043F\u0440\u0438\u043C\u0435\u0440 +7 (999) 123-45-67",
     type: "tel",
     value: form.phone
-  })), /*#__PURE__*/React.createElement("label", {
+  })), /*#__PURE__*/react.createElement("label", {
     className: "field"
-  }, /*#__PURE__*/React.createElement("span", null, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0433\u043E\u0441\u0442\u0435\u0439"), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/react.createElement("span", null, "\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u0433\u043E\u0441\u0442\u0435\u0439"), /*#__PURE__*/react.createElement("input", {
     min: "1",
     max: "99",
     name: "guests",
@@ -16745,42 +16745,42 @@ function App() {
     required: true,
     type: "number",
     value: form.guests
-  })))), /*#__PURE__*/React.createElement("aside", {
+  })))), /*#__PURE__*/react.createElement("aside", {
     className: "ticket-slot",
     "aria-live": "polite"
-  }, isSubmitted ? /*#__PURE__*/React.createElement("div", {
+  }, isSubmitted ? /*#__PURE__*/react.createElement("div", {
     className: "success-ticket"
-  }, /*#__PURE__*/React.createElement("span", {
+  }, /*#__PURE__*/react.createElement("span", {
     className: "success-ticket__check",
     "aria-hidden": "true"
-  }, "\u2713"), /*#__PURE__*/React.createElement("span", null, "\u0412\u044B \u0432 \u0441\u043F\u0438\u0441\u043A\u0435!")) : /*#__PURE__*/React.createElement("div", {
+  }, "\u2713"), /*#__PURE__*/react.createElement("span", null, "\u0412\u044B \u0432 \u0441\u043F\u0438\u0441\u043A\u0435!")) : /*#__PURE__*/react.createElement("div", {
     className: "ticket".concat(isTearing ? ' ticket--tearing' : ''),
     onAnimationEnd: finishTear
-  }, /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/react.createElement("div", {
     className: "ticket__perforation",
     "aria-hidden": "true"
   }, Array.from({
     length: 9
   }, function (_, index) {
-    return /*#__PURE__*/React.createElement("span", {
+    return /*#__PURE__*/react.createElement("span", {
       className: "ticket__hole",
       key: index
     });
-  })), /*#__PURE__*/React.createElement("span", {
+  })), /*#__PURE__*/react.createElement("span", {
     className: "ticket__notch ticket__notch--top",
     "aria-hidden": "true"
-  }), /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/react.createElement("span", {
     className: "ticket__notch ticket__notch--middle",
     "aria-hidden": "true"
-  }), /*#__PURE__*/React.createElement("span", {
+  }), /*#__PURE__*/react.createElement("span", {
     className: "ticket__notch ticket__notch--bottom",
     "aria-hidden": "true"
-  }), /*#__PURE__*/React.createElement("button", {
+  }), /*#__PURE__*/react.createElement("button", {
     "aria-label": "\u041E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u0440\u0435\u0433\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u044E",
     className: "ticket__send",
     disabled: isTearing,
     type: "submit"
-  }, /*#__PURE__*/React.createElement("span", null, isTearing ? 'Отправляем' : 'Отправить'))))));
+  }, /*#__PURE__*/react.createElement("span", null, isTearing ? 'Отправляем' : 'Отправить'))))));
 }
 ;// ./src/javascripts/registration.jsx
 
