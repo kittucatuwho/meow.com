@@ -12,7 +12,7 @@ module.exports = {
     registration: './src/javascripts/registration.jsx'
   },
   output: {
-    filename: '[name].js',
+    filename: '[name].[contenthash].js',
     path: path.resolve('.', 'docs')
   },
   module: {
@@ -52,7 +52,10 @@ module.exports = {
       }
     ]
   },
-  plugins: [new MiniCssExtractPlugin(), ...htmlPages],
+  plugins: [
+    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
+    ...htmlPages
+  ],
   optimization: {
     minimizer: [new CssMinimizerPlugin()]
   },
