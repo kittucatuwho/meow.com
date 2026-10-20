@@ -355,77 +355,62 @@ input {
 @media (max-width: 760px) {
   .registration {
     min-height: 100svh;
-    padding: 24px;
+    padding: clamp(12px, 4vw, 24px);
   }
 
   .ticket-card {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 1fr 150px;
+    grid-template-columns: minmax(0, 71%) minmax(0, 29%);
     width: 100%;
-    min-height: calc(100svh - 48px);
-    aspect-ratio: auto;
+    min-height: 0;
+    aspect-ratio: 1440 / 662;
   }
 
   .form-panel {
-    padding: 36px 24px 44px;
+    padding: clamp(10px, 3.5vw, 22px) clamp(14px, 7vw, 42px);
   }
 
   .form-panel h1 {
-    margin-bottom: 42px;
-    font-size: clamp(40px, 10vw, 66px);
-    white-space: normal;
+    margin-bottom: clamp(10px, 2vw, 16px);
+    font-size: clamp(20px, 5.8vw, 40px);
+    white-space: nowrap;
   }
 
   .form-panel fieldset {
-    gap: 24px;
+    gap: clamp(6px, 1.2vw, 12px);
   }
 
   .field {
-    font-size: 22px;
+    gap: 4px;
+    font-size: clamp(11px, 2.3vw, 16px);
   }
 
   .field input {
-    min-height: 56px;
-    font-size: 22px;
+    min-height: clamp(28px, 5.5vw, 38px);
+    padding: 3px 8px;
+    border-width: 2px;
+    font-size: clamp(12px, 2.5vw, 17px);
   }
 
   .ticket-slot {
-    min-height: 150px;
-  }
-
-  .ticket__perforation {
-    top: 10%;
-    right: 4%;
-    bottom: 10%;
-    left: 4%;
-    flex-direction: row;
-  }
-
-  .ticket__hole {
-    width: clamp(18px, 6vw, 30px);
+    min-height: 0;
   }
 
   .ticket__send {
-    padding: 12px;
-    font-size: 30px;
+    padding: 0 0 0 12%;
+    font-size: clamp(14px, 3.8vw, 24px);
   }
 
   .ticket__send span {
-    transform: none;
+    transform: rotate(90deg);
   }
 
   .ticket__glitch-art {
-    left: 50%;
-    width: auto;
+    inset: 0;
+    width: 100%;
     height: 100%;
-    top: 0;
-    transform: translateX(-50%);
+    object-fit: contain;
+    transform: none;
   }
-
-  .ticket__notch {
-    display: none;
-  }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
