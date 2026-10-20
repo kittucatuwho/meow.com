@@ -56,34 +56,39 @@ input {
 
 .ticket-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 24%);
+  position: relative;
+  isolation: isolate;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 29%);
   width: min(100%, 1440px);
-  aspect-ratio: 1440 / 663;
-  overflow: hidden;
+  aspect-ratio: 1440 / 662;
+  overflow: visible;
+  background: #000;
+}
+
+.ticket-card__art {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.ticket-card--torn .ticket-card__art {
+  clip-path: polygon(0 0, 70% 0, 69.2% 4%, 70.3% 8%, 69.3% 12%, 70.4% 16%, 69.2% 20%, 70.2% 24%, 69.1% 28%, 70.2% 32%, 69.2% 36%, 70.4% 40%, 69.2% 44%, 70.3% 48%, 69.2% 52%, 70.4% 56%, 69.2% 60%, 70.3% 64%, 69.1% 68%, 70.3% 72%, 69.2% 76%, 70.4% 80%, 69.2% 84%, 70.2% 88%, 69.1% 92%, 70.2% 96%, 69.4% 100%, 0 100%);
 }
 
 .form-panel {
   position: relative;
+  z-index: 1;
   isolation: isolate;
   padding: clamp(28px, 4vw, 64px) clamp(28px, 10.2vw, 148px);
-  background: #1600ff;
+  background: transparent;
 }
 
 .form-panel::before {
-  position: absolute;
-  z-index: 0;
-  inset: -1.5%;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018 .34' numOctaves='3' seed='19' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1.8 0 0 0 -.3 0 1.8 0 0 -.3 0 0 1.8 0 -.3 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.27' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(0deg, transparent 0 2px, rgb(0 0 0 / 36%) 2px 3px),
-    linear-gradient(90deg, rgb(0 255 255 / 35%) 0 2%, transparent 4% 54%, rgb(255 0 148 / 36%) 57% 60%, transparent 64% 100%),
-    linear-gradient(180deg, rgb(255 0 148 / 18%), transparent 30%, transparent 70%, rgb(0 255 255 / 22%));
-  background-size: 190px 190px, 130px 130px, 100% 3px, 100% 100%, 100% 100%;
-  background-blend-mode: color-dodge, screen, overlay, screen, screen;
-  content: "";
-  opacity: .82;
-  pointer-events: none;
+  display: none;
 }
 
 .form-panel h1 {
@@ -152,9 +157,10 @@ input {
 
 .ticket-slot {
   position: relative;
+  z-index: 1;
   min-height: 100%;
   overflow: visible;
-  background: #ff0094;
+  background: transparent;
 }
 
 .ticket-slot--torn {
@@ -166,33 +172,12 @@ input {
   inset: 0;
   isolation: isolate;
   overflow: hidden;
-  background: #ff0094;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.24' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(0deg, transparent 0 2px, rgb(0 0 0 / 25%) 2px 3px),
-    linear-gradient(90deg, transparent 0 16%, rgb(0 255 255 / 25%) 16% 18%, transparent 18% 63%, rgb(255 0 46 / 35%) 63% 66%, transparent 66% 100%);
-  background-size: 130px 130px, 100% 2px, 100% 100%;
-  background-blend-mode: color-dodge, multiply, screen;
-  filter: saturate(1.45) contrast(1.18);
+  background: transparent;
   transform-origin: 0 50%;
 }
 
 .ticket::before {
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='turbulence' baseFrequency='.012 .42' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='1.6 0 0 0 -.2 0 1.6 0 0 -.2 0 0 1.6 0 -.2 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E"),
-    repeating-linear-gradient(0deg, transparent 0 2px, rgb(0 0 0 / 22%) 2px 3px),
-    linear-gradient(90deg, transparent 0 13%, rgb(0 255 255 / 52%) 13% 23%, transparent 23% 100%),
-    linear-gradient(90deg, transparent 0 41%, rgb(255 0 46 / 62%) 41% 68%, transparent 68% 100%);
-  background-position: 0 0, 0 0, 0 24%, 0 76%;
-  background-size: 170px 170px, 100% 3px, 100% 3px, 100% 2px;
-  background-repeat: repeat, repeat, no-repeat, no-repeat;
-  content: "";
-  mix-blend-mode: screen;
-  opacity: .82;
-  pointer-events: none;
+  display: none;
 }
 
 .ticket--effect {
@@ -223,6 +208,7 @@ input {
 }
 
 .ticket__perforation {
+  display: none;
   position: absolute;
   z-index: 2;
   top: 4%;
@@ -242,6 +228,7 @@ input {
 }
 
 .ticket__notch {
+  display: none;
   position: absolute;
   z-index: 1;
   right: -42px;

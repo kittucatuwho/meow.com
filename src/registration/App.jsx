@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import glitchTicket from './meow-ticket-crt.png';
+import ticketBase from './meow-ticket-base.png';
 
 function phoneDigits(value) {
   let digits = value.replace(/\D/g, '');
@@ -71,7 +72,8 @@ export default function App() {
   return (
     <main className="page">
       <form className="registration" noValidate onSubmit={handleSubmit}>
-        <div className="ticket-card">
+        <div className={`ticket-card${isTearing || isSubmitted ? ' ticket-card--torn' : ''}`}>
+        <img className="ticket-card__art" src={ticketBase} alt="" aria-hidden="true" />
         <section className="form-panel" aria-labelledby="page-title">
           <h1 id="page-title">Регистрация на ивент</h1>
 
