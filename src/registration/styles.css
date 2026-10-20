@@ -177,26 +177,8 @@ input {
   transform-origin: 0 50%;
 }
 
-.ticket::before {
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  bottom: 0;
-  left: 7%;
-  width: 15.5%;
-  background:
-    repeating-linear-gradient(0deg, rgb(255 0 148 / 28%) 0 1px, transparent 1px 4px),
-    linear-gradient(180deg, #f329a4 0%, #f8e8f2 8%, #f6e8f0 22%, #ff0a91 23%, #f5e8f1 26%, #f7e8f1 82%, #ff0a91 88%, #f20a8f 100%);
-  content: "";
-  pointer-events: none;
-}
-
 .ticket--effect {
   background: transparent;
-}
-
-.ticket--effect::before {
-  display: block;
 }
 
 .ticket__glitch-art {
@@ -216,6 +198,19 @@ input {
 
 .ticket--tearing .ticket__glitch-art {
   animation: ticket-crt-arrive 900ms steps(1, end) both;
+}
+
+.ticket--tearing::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 7px, rgb(0 245 255 / 46%) 7px 9px),
+    linear-gradient(90deg, transparent 0 18%, rgb(255 0 148 / 42%) 18% 25%, transparent 25% 62%, rgb(0 245 255 / 38%) 62% 69%, transparent 69%);
+  content: "";
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: ticket-glitch-burst 900ms steps(1, end) both;
 }
 
 .ticket__perforation {
@@ -282,7 +277,7 @@ input {
   display: grid;
   place-items: center;
   width: 100%;
-  padding: 0 0 0 12%;
+  padding: 0;
   border: 0;
   background: transparent;
   color: #fff;
@@ -348,6 +343,18 @@ input {
   38%, 100% { opacity: 1; }
 }
 
+@keyframes ticket-glitch-burst {
+  0%, 8%, 21%, 35%, 100% { opacity: 0; clip-path: inset(0 0 0 0); transform: translateX(0); }
+  9% { opacity: 0.9; clip-path: inset(10% 0 79% 0); transform: translateX(-2%); }
+  12% { opacity: 0; clip-path: inset(10% 0 79% 0); transform: translateX(1%); }
+  22% { opacity: 0.8; clip-path: inset(38% 0 48% 0); transform: translateX(2%); }
+  25% { opacity: 0.1; clip-path: inset(38% 0 48% 0); transform: translateX(-1%); }
+  36% { opacity: 0.75; clip-path: inset(68% 0 20% 0); transform: translateX(-1.5%); }
+  40% { opacity: 0; clip-path: inset(68% 0 20% 0); transform: translateX(0); }
+  52% { opacity: 0.55; clip-path: inset(21% 0 70% 0); transform: translateX(1%); }
+  56% { opacity: 0; clip-path: inset(21% 0 70% 0); transform: translateX(0); }
+}
+
 @media (max-width: 760px) {
   .registration {
     min-height: 100svh;
@@ -392,7 +399,7 @@ input {
   }
 
   .ticket__send {
-    padding: 0 0 0 12%;
+    padding: 0;
     font-size: clamp(14px, 3.8vw, 24px);
   }
 

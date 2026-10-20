@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ticketBase from './meow-ticket-base.png';
+import ticketBase from './meow-ticket-base-clean.png';
 
 function phoneDigits(value) {
   const raw = String(value);
