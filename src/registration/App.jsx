@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import glitchTicket from './meow-ticket-crt.png';
 import ticketBase from './meow-ticket-base.png';
 
 function phoneDigits(value) {
-  let digits = value.replace(/\D/g, '');
-  if (digits.length === 11 && /^[78]/.test(digits)) digits = digits.slice(1);
+  const raw = String(value);
+  let digits = raw.replace(/\D/g, '');
+  if (/^\s*\+7(?:\D|$)/.test(raw)) digits = digits.slice(1);
+  else if (digits.length === 11 && /^[78]/.test(digits)) digits = digits.slice(1);
   return digits.slice(0, 10);
 }
 
@@ -45,7 +46,7 @@ export default function App() {
     setForm((current) => ({ ...current, phone: nextPhone }));
     requestAnimationFrame(() => {
       const updated = input;
-      let nextCaret = 0;
+      let nextCaret = nextPhone.startsWith('+7 (') ? nextPhone.indexOf('(') + 1 : 0;
       let digitCount = 0;
       while (nextCaret < nextPhone.length && digitCount < digitsBeforeCaret) {
         if (/\d/.test(nextPhone[nextCaret])) digitCount += 1;
@@ -98,7 +99,6 @@ export default function App() {
                 inputMode="numeric"
                 name="phone"
                 onChange={updatePhone}
-                onInput={updatePhone}
                 aria-invalid={hasAttemptedSubmit && phoneDigits(form.phone).length !== 10}
                 pattern="\\+7 \\(\\d{3}\\) \\d{3}-\\d{2}-\\d{2}"
                 placeholder="+7 (000) 000-00-00"
@@ -132,7 +132,7 @@ export default function App() {
               onAnimationEnd={finishTear}
             >
               {(isTearing || isSubmitted) && (
-                <img className="ticket__glitch-art" src={glitchTicket} alt="" aria-hidden="true" />
+                <img className="ticket__glitch-art" src={ticketBase} alt="" aria-hidden="true" />
               )}
               <div className="ticket__perforation" aria-hidden="true">
                 {Array.from({ length: 9 }, (_, index) => (
