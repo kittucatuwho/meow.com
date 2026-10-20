@@ -56,7 +56,7 @@ input {
 
 .ticket-card {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 29%);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 24%);
   width: min(100%, 1440px);
   aspect-ratio: 1440 / 663;
   overflow: hidden;
