@@ -58,7 +58,7 @@ input {
   display: grid;
   position: relative;
   isolation: isolate;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 29%);
+  grid-template-columns: minmax(0, 71%) minmax(0, 29%);
   width: min(100%, 1440px);
   aspect-ratio: 1440 / 662;
   overflow: visible;
@@ -163,12 +163,31 @@ input {
   background: transparent;
 }
 
+.ticket-slot::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 6%;
+  width: 20%;
+  background-image: url("./meow-ticket-base.png");
+  background-position: 90% 0;
+  background-size: 1724% 100%;
+  content: "";
+  pointer-events: none;
+}
+
+.ticket-slot--torn::before {
+  display: none;
+}
+
 .ticket-slot--torn {
   background: #000;
 }
 
 .ticket {
   position: absolute;
+  z-index: 3;
   inset: 0;
   isolation: isolate;
   overflow: hidden;
