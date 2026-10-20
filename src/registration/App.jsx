@@ -142,7 +142,7 @@ export default function App() {
                 disabled={isTearing}
                 type="submit"
               >
-                <span>{isTearing ? 'отправляем' : 'отправить'}</span>
+                <span>{isTearing ? 'отправлено!' : 'отправить!'}</span>
               </button>
             </div>
           )}

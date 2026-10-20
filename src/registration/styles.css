@@ -103,7 +103,7 @@ input {
   border-radius: 0;
   outline: none;
   background: #fff;
-  color: #ff0094;
+  color: #000;
   font-size: clamp(18px, 2.375vw, 38px);
   line-height: 1.15;
 }
@@ -337,10 +337,6 @@ input {
     display: none;
   }
 
-  .success-ticket {
-    flex-direction: row;
-    font-size: 26px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
