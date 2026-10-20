@@ -182,8 +182,8 @@ input {
   z-index: 3;
   top: 0;
   bottom: 0;
-  left: 8.5%;
-  width: 12.5%;
+  left: 7%;
+  width: 15.5%;
   background:
     repeating-linear-gradient(0deg, rgb(255 0 148 / 28%) 0 1px, transparent 1px 4px),
     linear-gradient(180deg, #f329a4 0%, #f8e8f2 8%, #f6e8f0 22%, #ff0a91 23%, #f5e8f1 26%, #f7e8f1 82%, #ff0a91 88%, #f20a8f 100%);
