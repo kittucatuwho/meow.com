@@ -73,8 +73,6 @@ input {
   height: 100%;
   object-fit: fill;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(90deg, #000 0 72.6%, transparent 72.9% 78.2%, #000 78.5%);
-  mask-image: linear-gradient(90deg, #000 0 72.6%, transparent 72.9% 78.2%, #000 78.5%);
 }
 
 .ticket-card--torn .ticket-card__art {
@@ -167,24 +165,6 @@ input {
   background: transparent;
 }
 
-.ticket-slot::before {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  bottom: 0;
-  left: 6%;
-  width: 20%;
-  background-image: url("./meow-ticket-base.png");
-  background-position: 90% 0;
-  background-size: 1724% 100%;
-  content: "";
-  pointer-events: none;
-}
-
-.ticket-slot--torn::before {
-  display: none;
-}
-
 .ticket-slot--torn {
   background: #000;
 }
@@ -236,6 +216,7 @@ input {
   top: 4%;
   bottom: 4%;
   left: 9%;
+  width: 12.5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -244,7 +225,7 @@ input {
 
 .ticket__hole {
   flex: 0 0 auto;
-  width: 12%;
+  width: 100%;
   aspect-ratio: 1;
   border-radius: 50%;
   background: #000;
