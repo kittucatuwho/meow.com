@@ -122,13 +122,8 @@ export default function App() {
           </fieldset>
         </section>
 
-        <aside className="ticket-slot" aria-live="polite">
-          {isSubmitted ? (
-            <div className="success-ticket">
-              <span className="success-ticket__check" aria-hidden="true">✓</span>
-              <span>Вы в списке!</span>
-            </div>
-          ) : (
+        <aside className={`ticket-slot${isSubmitted ? ' ticket-slot--empty' : ''}`} aria-live="polite">
+          {!isSubmitted && (
             <div
               className={`ticket${isTearing ? ' ticket--tearing' : ''}`}
               onAnimationEnd={finishTear}
