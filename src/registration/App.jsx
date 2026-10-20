@@ -20,7 +20,7 @@ function formatPhone(value) {
 const initialForm = {
   name: '',
   phone: '',
-  guests: '1',
+  guests: '',
 };
 
 export default function App() {
@@ -115,6 +115,7 @@ export default function App() {
                 onChange={updateField}
                 required
                 aria-invalid={hasAttemptedSubmit && !(Number(form.guests) >= 1)}
+                placeholder="1"
                 type="number"
                 value={form.guests}
               />
