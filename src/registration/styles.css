@@ -208,7 +208,6 @@ input {
 }
 
 .ticket__perforation {
-  display: none;
   position: absolute;
   z-index: 4;
   top: 4%;
