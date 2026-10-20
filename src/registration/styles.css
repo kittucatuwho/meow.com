@@ -208,9 +208,8 @@ input {
 }
 
 .ticket__perforation {
-  display: none;
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   top: 4%;
   bottom: 4%;
   left: 9%;
@@ -221,10 +220,12 @@ input {
 }
 
 .ticket__hole {
+  flex: 0 0 clamp(24px, 3.125vw, 50px);
   width: clamp(24px, 3.125vw, 50px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: #050505;
+  background: #000;
+  box-shadow: 0 0 0 1px #000;
 }
 
 .ticket__notch {
