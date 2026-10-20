@@ -63,11 +63,31 @@ input {
 }
 
 .form-panel {
+  position: relative;
+  isolation: isolate;
   padding: clamp(28px, 4vw, 64px) clamp(28px, 10.2vw, 148px);
   background: #1600ff;
 }
 
+.form-panel::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.24' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgb(0 0 0 / 28%) 2px 3px),
+    linear-gradient(90deg, transparent 0 11%, rgb(0 255 255 / 24%) 11% 13%, transparent 13% 58%, rgb(255 0 148 / 34%) 58% 61%, transparent 61% 100%),
+    linear-gradient(180deg, rgb(255 255 255 / 8%), transparent 24%, transparent 72%, rgb(0 255 255 / 12%));
+  background-size: 180px 180px, 100% 3px, 100% 100%, 100% 100%;
+  background-blend-mode: soft-light, screen, screen, screen;
+  content: "";
+  opacity: 0.58;
+  pointer-events: none;
+}
+
 .form-panel h1 {
+  position: relative;
+  z-index: 1;
   margin: 0 0 clamp(32px, 3.4vw, 58px);
   color: #fff;
   font-family: "My Weekend", sans-serif;
@@ -79,6 +99,8 @@ input {
 }
 
 .form-panel fieldset {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: clamp(14px, 1.9vw, 30px);
   max-width: 710px;
@@ -141,13 +163,39 @@ input {
 .ticket {
   position: absolute;
   inset: 0;
+  isolation: isolate;
   overflow: hidden;
   background: #ff0094;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.24' numOctaves='2' seed='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgb(0 0 0 / 25%) 2px 3px),
+    linear-gradient(90deg, transparent 0 16%, rgb(0 255 255 / 25%) 16% 18%, transparent 18% 63%, rgb(255 0 46 / 35%) 63% 66%, transparent 66% 100%);
+  background-size: 160px 160px, 100% 3px, 100% 100%;
+  background-blend-mode: soft-light, multiply, screen;
   transform-origin: 0 50%;
+}
+
+.ticket::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, transparent 0 13%, rgb(0 255 255 / 40%) 13% 23%, transparent 23% 100%),
+    linear-gradient(90deg, transparent 0 41%, rgb(255 0 46 / 45%) 41% 68%, transparent 68% 100%);
+  background-position: 0 24%, 0 76%;
+  background-size: 100% 3px, 100% 2px;
+  background-repeat: no-repeat;
+  content: "";
+  mix-blend-mode: screen;
+  pointer-events: none;
 }
 
 .ticket--effect {
   background: transparent;
+}
+
+.ticket--effect::before {
+  display: none;
 }
 
 .ticket__glitch-art {
@@ -271,7 +319,11 @@ input {
 
 .ticket--torn {
   opacity: 1;
-  transform: translate(14%, 6%);
+  inset: 5% 5% 5% auto;
+  width: 90%;
+  height: 90%;
+  transform: rotate(-3deg);
+  transform-origin: center;
   pointer-events: none;
 }
 
@@ -292,7 +344,10 @@ input {
   }
   100% {
     opacity: 1;
-    transform: translate(14%, 6%);
+    inset: 5% 5% 5% auto;
+    width: 90%;
+    height: 90%;
+    transform: rotate(-3deg);
   }
 }
 
@@ -370,13 +425,9 @@ input {
   .ticket__glitch-art {
     left: 50%;
     width: auto;
-    height: 150%;
-    top: -25%;
+    height: 100%;
+    top: 0;
     transform: translateX(-50%);
-  }
-
-  .ticket--torn {
-    transform: translate(8%, 7%);
   }
 
   .ticket__notch {
