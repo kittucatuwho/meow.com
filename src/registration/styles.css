@@ -272,7 +272,6 @@ input {
 .ticket--torn {
   opacity: 1;
   transform: translate(14%, 6%);
-  filter: drop-shadow(-12px 13px 0 rgb(255 255 255 / 28%)) drop-shadow(-22px 19px 10px rgb(0 0 0 / 32%));
   pointer-events: none;
 }
 
@@ -280,24 +279,20 @@ input {
   0% {
     opacity: 1;
     transform: translateX(0) rotate(0);
-    filter: drop-shadow(0 0 0 rgb(0 0 0 / 0));
   }
   18% {
     transform: translateX(-12px) rotate(-1.5deg);
   }
   34% {
     transform: translateX(4px) rotate(1deg);
-    filter: drop-shadow(-12px 8px 0 rgb(255 255 255 / 28%)) drop-shadow(2px 0 #00ffff);
   }
   62% {
     opacity: 1;
     transform: translate(8%, 2%) rotate(-2deg);
-    filter: drop-shadow(-20px 10px 0 rgb(255 255 255 / 38%));
   }
   100% {
     opacity: 1;
     transform: translate(14%, 6%);
-    filter: drop-shadow(-12px 13px 0 rgb(255 255 255 / 28%)) drop-shadow(-22px 19px 10px rgb(0 0 0 / 32%));
   }
 }
 
@@ -375,6 +370,8 @@ input {
   .ticket__glitch-art {
     left: 50%;
     width: auto;
+    height: 150%;
+    top: -25%;
     transform: translateX(-50%);
   }
 
