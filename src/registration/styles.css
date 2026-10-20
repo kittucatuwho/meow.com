@@ -134,7 +134,7 @@ input {
   background: #ff0094;
 }
 
-.ticket-slot--empty {
+.ticket-slot--torn {
   background: #000;
 }
 
@@ -144,6 +144,29 @@ input {
   overflow: hidden;
   background: #ff0094;
   transform-origin: 0 50%;
+}
+
+.ticket--effect {
+  background: transparent;
+}
+
+.ticket__glitch-art {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ticket--effect .ticket__perforation,
+.ticket--effect .ticket__notch {
+  visibility: hidden;
+}
+
+.ticket--tearing .ticket__glitch-art {
+  animation: ticket-crt-arrive 900ms steps(1, end) both;
 }
 
 .ticket__perforation {
@@ -201,7 +224,7 @@ input {
 
 .ticket__send {
   position: absolute;
-  z-index: 3;
+  z-index: 5;
   inset: 0;
   display: grid;
   place-items: center;
@@ -246,6 +269,13 @@ input {
   pointer-events: none;
 }
 
+.ticket--torn {
+  opacity: 1;
+  transform: translate(14%, 6%);
+  filter: drop-shadow(-12px 13px 0 rgb(255 255 255 / 28%)) drop-shadow(-22px 19px 10px rgb(0 0 0 / 32%));
+  pointer-events: none;
+}
+
 @keyframes ticket-tear {
   0% {
     opacity: 1;
@@ -257,18 +287,27 @@ input {
   }
   34% {
     transform: translateX(4px) rotate(1deg);
-    filter: drop-shadow(-12px 8px 0 rgb(255 255 255 / 28%));
+    filter: drop-shadow(-12px 8px 0 rgb(255 255 255 / 28%)) drop-shadow(2px 0 #00ffff);
   }
   62% {
     opacity: 1;
-    transform: translate(10%, -1%) rotate(3deg);
+    transform: translate(8%, 2%) rotate(-2deg);
     filter: drop-shadow(-20px 10px 0 rgb(255 255 255 / 38%));
   }
   100% {
-    opacity: 0;
-    transform: translate(125%, 4%) rotate(18deg);
-    filter: drop-shadow(-28px 24px 9px rgb(0 0 0 / 24%));
+    opacity: 1;
+    transform: translate(14%, 6%);
+    filter: drop-shadow(-12px 13px 0 rgb(255 255 255 / 28%)) drop-shadow(-22px 19px 10px rgb(0 0 0 / 32%));
   }
+}
+
+@keyframes ticket-crt-arrive {
+  0%, 14% { opacity: 0; }
+  18% { opacity: 0.72; }
+  21% { opacity: 0.12; }
+  24%, 31% { opacity: 1; }
+  34% { opacity: 0.38; }
+  38%, 100% { opacity: 1; }
 }
 
 @media (max-width: 760px) {
@@ -331,6 +370,16 @@ input {
 
   .ticket__send span {
     transform: none;
+  }
+
+  .ticket__glitch-art {
+    left: 50%;
+    width: auto;
+    transform: translateX(-50%);
+  }
+
+  .ticket--torn {
+    transform: translate(8%, 7%);
   }
 
   .ticket__notch {

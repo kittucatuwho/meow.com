@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import glitchTicket from './meow-ticket-crt.png';
 
 function phoneDigits(value) {
   let digits = value.replace(/\D/g, '');
@@ -123,12 +124,14 @@ export default function App() {
           </fieldset>
         </section>
 
-        <aside className={`ticket-slot${isSubmitted ? ' ticket-slot--empty' : ''}`} aria-live="polite">
-          {!isSubmitted && (
+        <aside className={`ticket-slot${isTearing || isSubmitted ? ' ticket-slot--torn' : ''}`} aria-live="polite">
             <div
-              className={`ticket${isTearing ? ' ticket--tearing' : ''}`}
+              className={`ticket${isTearing ? ' ticket--tearing' : ''}${isSubmitted ? ' ticket--torn' : ''}${isTearing || isSubmitted ? ' ticket--effect' : ''}`}
               onAnimationEnd={finishTear}
             >
+              {(isTearing || isSubmitted) && (
+                <img className="ticket__glitch-art" src={glitchTicket} alt="" aria-hidden="true" />
+              )}
               <div className="ticket__perforation" aria-hidden="true">
                 {Array.from({ length: 9 }, (_, index) => (
                   <span className="ticket__hole" key={index} />
@@ -143,10 +146,9 @@ export default function App() {
                 disabled={isTearing}
                 type="submit"
               >
-                <span>{isTearing ? 'отправлено!' : 'отправить!'}</span>
+                <span>{isTearing || isSubmitted ? 'отправлено!' : 'отправить!'}</span>
               </button>
             </div>
-          )}
         </aside>
         </div>
       </form>
