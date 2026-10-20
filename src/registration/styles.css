@@ -73,9 +73,13 @@ input {
   height: 100%;
   object-fit: fill;
   pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, #000 0 72.6%, transparent 72.9% 78.2%, #000 78.5%);
+  mask-image: linear-gradient(90deg, #000 0 72.6%, transparent 72.9% 78.2%, #000 78.5%);
 }
 
 .ticket-card--torn .ticket-card__art {
+  -webkit-mask-image: none;
+  mask-image: none;
   clip-path: polygon(0 0, 70% 0, 69.2% 4%, 70.3% 8%, 69.3% 12%, 70.4% 16%, 69.2% 20%, 70.2% 24%, 69.1% 28%, 70.2% 32%, 69.2% 36%, 70.4% 40%, 69.2% 44%, 70.3% 48%, 69.2% 52%, 70.4% 56%, 69.2% 60%, 70.3% 64%, 69.1% 68%, 70.3% 72%, 69.2% 76%, 70.4% 80%, 69.2% 84%, 70.2% 88%, 69.1% 92%, 70.2% 96%, 69.4% 100%, 0 100%);
 }
 
